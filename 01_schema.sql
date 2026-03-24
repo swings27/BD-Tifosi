@@ -1,0 +1,9 @@
+CREATE DATABASE IF NOT EXISTS tifosi 
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+
+CREATE USER IF NOT EXISTS 'tifosi' IDENTIFIED BY 'Password!';
+GRANT ALL PRIVILEGES ON tifosi.* TO 'tifosi';
+FLUSH PRIVILEGES ;
+
+USE tifosi;
