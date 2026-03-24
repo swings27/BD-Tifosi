@@ -7,3 +7,39 @@ GRANT ALL PRIVILEGES ON tifosi.* TO 'tifosi';
 FLUSH PRIVILEGES ;
 
 USE tifosi;
+
+CREATE TABLE ingredients (
+    id_ingredient INT PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(50) NOT NULL UNIQUE
+);
+
+CREATE TABLE marque (
+    id_marque INT PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(50) NOT NULL UNIQUE
+);
+
+CREATE TABLE foccacia (
+    id_focaccia INT PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(50) NOT NULL UNIQUE,
+    prix DECIMAL(5,2) NOT NULL
+);
+
+CREATE TABLE client (
+    id_client INT PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(50) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    code_postal INT NOT NULL
+);
+
+CREATE TABLE menu (
+    id_menu INT PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(50) NOT NULL,
+    prix DECIMAL(5,2) NOT NULL
+);
+
+CREATE TABLE boisson (
+    id_boisson INT PRIMARY KEY AUTO_INCREMENT,
+    nom VARCHAR(50) NOT NULL UNIQUE,
+    id_marque INT NOT NULL,
+    FOREIGN KEY (id_marque) REFERENCES marque(id_marque) ON DELETE RESTRICT
+);
