@@ -18,3 +18,31 @@ INSERT INTO boisson (nom, id_marque) VALUES
     ('Monster Energy Ultra Gold', 3),
     ('Monster Energy Ultra Blue'), 3,
     ('Eau de source', 2);
+
+-- Insertion données ingrédient
+INSERT INTO ingredient (nom) VALUES 
+    ('Ail'), 
+    ('Ananas'), 
+    ('Artichaut'), 
+    ('Bacon'), 
+    ('Base Tomate'), 
+    ('Base Crème'),
+    ('Champignon'), 
+    ('Chèvre'), 
+    ('Cresson'), 
+    ('Emmental'), 
+    ('Gorgonzola'), 
+    ('Jambon cuit'),
+    ('Jambon fumé'),
+    ('Oeuf'),
+    ('Oignon'),
+    ('Olive noire'),
+    ('Olive verte'),
+    ('Parmesan'),
+    ('Piment'),
+    ('Poivre'),
+    ('Pomme de terre'),
+    ('Raclette'),
+    ('Salami'),
+    ('Tomate cerise'),
+    ('Mozarella');
