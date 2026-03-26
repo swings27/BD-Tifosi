@@ -13,3 +13,11 @@
     AS NumIngredient
     FROM ingredient;
 -- Résultat obtenu : Le chiffre 25 sous la colonne "NumIngredient" comme demandé
+
+-- Requête 3 : Afficher le prix moyen des focaccias
+-- Résultat attendu : Le résultat du calcul mathématique du prix moyen des focaccias
+-- Code :
+    SELECT AVG(prix)
+    AS AveragePrice
+    FROM focaccia;
+-- Résultat obtenu : Le nombre 10.375000 dans la colonne AveragePrice
