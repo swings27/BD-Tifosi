@@ -60,7 +60,7 @@ source 03_queries.sql
 
 ## Structure du projet
 
-BD-TIFOSI/
+BD-TIFOSI
 → 01_schema.sql      # Création de la base et des tables
 → 02_data.sql        # Insertion des données de test
 → 03_queries.sql     # Les 10 requêtes de vérification
