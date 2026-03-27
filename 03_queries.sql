@@ -17,10 +17,10 @@
 -- Requête 3 : Afficher le prix moyen des focaccias
 -- Résultat attendu : Le résultat du calcul mathématique du prix moyen des focaccias
 -- Code :
-    SELECT AVG(prix)
+    SELECT ROUND(AVG(prix), 2)
     AS AveragePrice
     FROM focaccia;
--- Résultat obtenu : Le nombre 10.375000 dans la colonne AveragePrice
+-- Résultat obtenu : Le nombre arrondi 10.38 dans la colonne AveragePrice
 
 -- Requête 4 : Afficher la liste des boissons avec leur marque, triée par nom de boisson
 -- Résultat attendu : La liste alphabétique des boissons avec 2 colonnes pour leur nom et la marque associée, sans id
@@ -48,7 +48,7 @@
     SELECT focaccia.nom, COUNT(comprend.id_ingredient) AS nb_ingredient
     FROM focaccia
     JOIN comprend ON focaccia.id_focaccia = comprend.id_focaccia
-    GROUP BY focaccia.nom
+    GROUP BY focaccia.nom;
 -- Résultat obtenu : 2 colonnes avec le nom de chaque focaccia par ordre alphabétique et le nombre d'ingrédients lui correspondant
 
 -- Requête 7 : Afficher le nom de la focaccia qui a le plus d'ingrédients
@@ -69,17 +69,29 @@
     FROM focaccia
     JOIN comprend ON focaccia.id_focaccia = comprend.id_focaccia
     JOIN ingredient ON ingredient.id_ingredient = comprend.id_ingredient
-    WHERE comprend.id_ingredient = 1
+    WHERE ingredient.nom = 'Ail'
+    ORDER BY focaccia.nom ASC;
 -- Résultat obtenu : La liste alphabétique des focaccias contenant de l'ail (Mozaccia, Gorgonzollaccia, Raclaccia et Paysanne)
 
 -- Requête 9 : Afficher la liste des ingrédients inutilisés
--- Résultat attendu : 
+-- Résultat attendu : La liste des ingredients n'apparaissant dans aucune focaccia
 -- Code :
-    SELECT 
--- Résultat obtenu : La liste des noms des ingrédients compris dans la Raclaccia
+    SELECT ingredient.nom
+    FROM ingredient
+    LEFT JOIN comprend ON ingredient.id_ingredient = comprend.id_ingredient
+    WHERE comprend.id_ingredient IS NULL;
+-- Résultat obtenu : La liste de 2 ingrédients (Salami et Tomate cerise)
 
 -- Requête 10 : Afficher la liste des focaccia qui n'ont pas de champignons
--- Résultat attendu : 
+-- Résultat attendu : La liste des focaccias ne contenant pas de champignons
 -- Code :
-    SELECT 
--- Résultat obtenu :
+    SELECT focaccia.nom
+    FROM focaccia
+    WHERE focaccia.id_focaccia NOT IN (
+        SELECT focaccia.id_focaccia
+        FROM focaccia
+        JOIN comprend ON focaccia.id_focaccia = comprend.id_focaccia
+        JOIN ingredient ON ingredient.id_ingredient = comprend.id_ingredient
+        WHERE ingredient.id_ingredient = 7
+    );
+-- Résultat obtenu : La liste des 2 pizzas ne comprenant pas de champignons (Américaine et Hawaienne)
